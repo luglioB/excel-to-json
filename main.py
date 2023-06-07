@@ -23,7 +23,7 @@ for x in os.listdir(INPUT_FOLDER):
             except:
                 raise 'file content is not valid'
 
-        with open(os.path.join(OUTPUT_FOLDER, f'{filename}.json'), 'w') as json_file:
+        with open(os.path.join(OUTPUT_FOLDER, f'{filename}_{sheet}.json'), 'w') as json_file:
             json.dump(thisisjson_dict, json_file)
 
 if found == False:
