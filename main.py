@@ -4,6 +4,8 @@ import os
 
 INPUT_FOLDER = os.path.join('.', 'input')
 OUTPUT_FOLDER = os.path.join('.', 'output')
+MERGE_FOLDER = os.path.join('.', 'merge')
+
 
 filename = input(r"Name of the file to convert - no extension: ")
 sheet = input(r"Name of the sheet: ")
@@ -18,6 +20,8 @@ for x in os.listdir(INPUT_FOLDER):
         else:
             try:
                 excel_data_df = pandas.read_excel(os.path.join(INPUT_FOLDER, x), sheet_name=sheet)
+                # df_numeric = excel_data_df[map(lambda x :x not in ['Isin', 'Des'], list(excel_data_df.columns))]
+                # df_numeric.applymap(lambda x: float(str(x)[0:1]))
                 thisisjson = excel_data_df.to_json(orient='records')
                 thisisjson_dict = json.loads(thisisjson)
             except:
